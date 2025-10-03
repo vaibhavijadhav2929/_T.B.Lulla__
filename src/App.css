@@ -1,0 +1,202 @@
+/* Global App Styles */
+.App {
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  color: #111827;
+}
+
+/* Section Headings */
+.section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-heading h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #16a34a, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  animation: fadeIn 1s ease-out;
+}
+
+.section-heading p {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  color: #6b7280;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 1.25rem auto 0;
+  background: linear-gradient(90deg, #16a34a, #3b82f6, #16a34a);
+  border-radius: 8px;
+  animation: slideInUp 0.8s ease-out;
+}
+
+/* Add glowing hover effect to headings */
+.section-heading h2:hover {
+  text-shadow: 0 0 12px rgba(22, 163, 74, 0.4), 0 0 24px rgba(59, 130, 246, 0.3);
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+/* Smooth Page Transitions */
+.page-transition {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #15803d;
+}
+
+/* Gradient Text Effect */
+.gradient-text {
+  background: linear-gradient(135deg, #16a34a 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+}
+
+/* Animated Gradient Background */
+.animated-gradient {
+  background: linear-gradient(-45deg, #16a34a, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 400% 400%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Buttons */
+button,
+.btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #16a34a);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3), 0 8px 16px rgba(59, 130, 246, 0.25);
+}
+
+/* Glow Effect */
+.glow {
+  box-shadow: 0 0 18px rgba(22, 163, 74, 0.45);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.glow:hover {
+  box-shadow: 0 0 28px rgba(22, 163, 74, 0.7);
+}
+
+/* Cards */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1rem;
+  background: #fff;
+}
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.12);
+}
+
+/* Animations - common */
+.fade-in { animation: fadeIn 0.6s ease-out; }
+.slide-in-up { animation: slideInUp 0.6s ease-out; }
+.zoom-in { animation: zoomIn 0.5s ease-out; }
+
+/* Keyframes (shortened to main ones for performance) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr !important;
+  }
+}
+
+/* Contact Page Responsive Styles */
+@media (max-width: 768px) {
+  /* Make grid single column on mobile */
+  .contact-page-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Adjust heading size on mobile */
+  .contact-page-grid + div h1 {
+    font-size: 2rem !important;
+  }
+  
+  /* Adjust padding for mobile */
+  main {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-page-grid h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  .contact-page-grid h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .contact-page-grid h3 {
+    font-size: 1.25rem !important;
+  }
+}

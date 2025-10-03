@@ -1,0 +1,424 @@
+/* General Gallery Styles */
+.gallery-section {
+    padding: 4rem 1rem;
+    background-color: #f9fafb;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-divider {
+    width: 100px;
+    height: 4px;
+    background-color: #16a34a;
+    margin: 0 auto 1rem;
+    border-radius: 2px;
+}
+
+.gallery-description {
+    font-size: 1.1rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Bento Grid Layout (for 5 items preview) */
+.bento-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 200px 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bento-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.bento-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Bento Item Spans (for preview mode - 5 items) */
+/* Item 1: Top-left small */
+.bento-item-1 { 
+    grid-column: 1 / 2; 
+    grid-row: 1 / 2; 
+}
+
+/* Item 2: CENTER BIG (spans 2 rows, 1 column) */
+.bento-item-2 { 
+    grid-column: 2 / 3; 
+    grid-row: 1 / 3; 
+}
+
+/* Item 3: Top-right small */
+.bento-item-3 { 
+    grid-column: 3 / 4; 
+    grid-row: 1 / 2; 
+}
+
+/* Item 4: Bottom-left small */
+.bento-item-4 { 
+    grid-column: 1 / 2; 
+    grid-row: 2 / 3; 
+}
+
+/* Item 5: Bottom-right small */
+.bento-item-5 { 
+    grid-column: 3 / 4; 
+    grid-row: 2 / 3; 
+}
+
+/* Regular Grid Layout (for full gallery page) */
+.video-regular-grid,
+.photo-regular-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.video-grid-item,
+.photo-grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+/* Video items keep 16:9 aspect ratio */
+.video-grid-item {
+    aspect-ratio: 16 / 9;
+}
+
+/* Photo items use 1:1 square ratio for consistency */
+.photo-grid-item {
+    aspect-ratio: 1 / 1;
+    min-height: 250px;
+}
+
+.video-grid-item:hover,
+.photo-grid-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.video-grid-item img,
+.photo-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.photo-grid-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 180px 180px;
+        gap: 0.8rem;
+    }
+    .bento-item-1, .bento-item-2, .bento-item-3, .bento-item-4, .bento-item-5 {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+    .video-regular-grid,
+    .photo-regular-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .photo-grid-item {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
+    .bento-item {
+        min-height: 200px;
+        aspect-ratio: 16 / 9;
+    }
+    .gallery-title {
+        font-size: 1.8rem;
+    }
+    .gallery-description {
+        font-size: 1rem;
+    }
+    .video-regular-grid,
+    .photo-regular-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .photo-grid-item {
+        min-height: 250px;
+        aspect-ratio: 4 / 3;
+    }
+    .video-grid-item {
+        aspect-ratio: 16 / 9;
+    }
+    /* Reduce animation intensity on mobile */
+    .video-grid-item:hover,
+    .bento-item:hover,
+    .photo-grid-item:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+    .video-grid-item:hover img,
+    .bento-item:hover img,
+    .photo-grid-item:hover img {
+        transform: scale(1.05);
+    }
+}
+
+/* Overlays */
+.photo-overlay,
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-direction: column;
+    backdrop-filter: blur(0px);
+}
+
+.bento-item:hover .photo-overlay,
+.bento-item:hover .video-overlay,
+.video-grid-item:hover .video-overlay,
+.photo-grid-item:hover .photo-overlay {
+    opacity: 1;
+    backdrop-filter: blur(2px);
+}
+
+.video-overlay {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Add glow effect on hover */
+.video-grid-item:hover,
+.bento-item:has(.video-overlay):hover {
+    box-shadow: 0 20px 40px rgba(22, 163, 74, 0.15), 
+                0 0 0 2px rgba(22, 163, 74, 0.1);
+}
+
+.video-overlay span {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Transparent Play Button */
+.video-overlay svg,
+.photo-overlay svg {
+    opacity: 0.8;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+}
+
+/* Advanced Video Hover Animations */
+.video-grid-item,
+.bento-item a {
+    cursor: pointer;
+    position: relative;
+}
+
+/* Lift, scale, and rotate slightly */
+.video-grid-item:hover {
+    transform: translateY(-12px) scale(1.03) rotateZ(1deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.bento-item:hover {
+    transform: translateY(-10px) scale(1.03) rotateZ(-0.5deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+/* Image zoom and slight rotation */
+.video-grid-item:hover img {
+    transform: scale(1.1) rotate(2deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bento-item:hover img {
+    transform: scale(1.12) rotate(-1deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Play button animations */
+.video-grid-item:hover .video-overlay svg,
+.bento-item:hover .video-overlay svg {
+    transform: scale(1.3);
+    opacity: 1;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0%, 100% { transform: scale(1.3); }
+    50% { transform: scale(1.5); }
+}
+
+@keyframes glow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(22, 163, 74, 0.3),
+                    0 0 40px rgba(22, 163, 74, 0.2);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(22, 163, 74, 0.5),
+                    0 0 60px rgba(22, 163, 74, 0.3);
+    }
+}
+
+.video-grid-item:hover .video-overlay svg,
+.bento-item:hover .video-overlay svg {
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+.video-grid-item:hover {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Smooth image transitions */
+.video-grid-item img,
+.bento-item img {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Overlay slide-in effect */
+.video-overlay,
+.photo-overlay {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.video-grid-item:hover .video-overlay,
+.bento-item:hover .video-overlay,
+.photo-grid-item:hover .photo-overlay,
+.bento-item:hover .photo-overlay {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text slide up animation */
+.video-overlay span {
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.3s ease 0.1s;
+}
+
+.video-grid-item:hover .video-overlay span,
+.bento-item:hover .video-overlay span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    transform: scale(1.1);
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* View All Button */
+.view-all-button-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.view-all-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #16a34a;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.view-all-button:hover {
+    background-color: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
